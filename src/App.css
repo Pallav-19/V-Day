@@ -184,6 +184,10 @@
   box-shadow: 0 4px 16px rgba(200, 80, 80, 0.35);
 }
 
+.btn-no-runaway {
+  z-index: 1000 !important;
+}
+
 /* Success screen */
 .success-screen {
   padding: clamp(0.25rem, 1vh, 0.5rem) 0;

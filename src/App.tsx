@@ -88,30 +88,39 @@ export default function Page() {
               >
                 Yes!
               </button>
-              <button
-                type="button"
-                className="btn-no"
-                onMouseEnter={noCount >= 1 ? runAway : undefined}
-                onClick={runAway}
-                style={
-                  useRunawayStyle
-                    ? {
-                        position: "fixed",
-                        left: noPosition.x,
-                        top: noPosition.y,
-                        transform: "translate(-50%, -50%)",
-                        transition: "left 0.2s ease-out, top 0.2s ease-out",
-                        zIndex: 50,
-                      }
-                    : undefined
-                }
-              >
-                {noText}
-              </button>
+              {!useRunawayStyle && (
+                <button
+                  type="button"
+                  className="btn-no"
+                  onClick={runAway}
+                >
+                  {noText}
+                </button>
+              )}
             </div>
           </>
         )}
       </div>
+
+      {/* Render runaway button outside card when in runaway mode */}
+      {useRunawayStyle && (
+        <button
+          type="button"
+          className="btn-no btn-no-runaway"
+          onMouseEnter={runAway}
+          onClick={runAway}
+          style={{
+            position: "fixed",
+            left: noPosition.x,
+            top: noPosition.y,
+            transform: "translate(-50%, -50%)",
+            transition: "left 0.2s ease-out, top 0.2s ease-out",
+            zIndex: 50,
+          }}
+        >
+          {noText}
+        </button>
+      )}
     </div>
   );
 }
